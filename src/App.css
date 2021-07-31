@@ -1,38 +1,70 @@
+html, body, #app, #app>div {
+  height: 100%;
+  background-color: aqua;
+}
+
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.card{
+  width: 400px;
+  margin: auto;
+  margin-top: 10rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+.center{
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.display{
+  margin: auto;
+  margin-top: 5rem;
+}
+
+.city-input{
+  text-decoration: none;
+  width: 80%;
+  padding: 0.5rem;
+}
+
+.form-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card .btn{
+  margin-left: 5px;
+}
+.btn{
+  text-decoration: none;
+  background-color: blueviolet;
+  padding: 0.5rem;
+  border: 1px solid aqua;
+  cursor: pointer;
   color: white;
+  border: 2px solid blueviolet;
+  border-radius: 15%;
 }
 
-.App-link {
-  color: #61dafb;
+.btn:hover{
+  background-color: white;
+  color: blueviolet;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+ul{
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+  display: flex;
+  justify-content: center;
+}
+.table{
+  margin-top: 20px;
+  margin: auto;
+}
+li{
+  text-decoration: none;
+  margin-right: 2vh;
 }

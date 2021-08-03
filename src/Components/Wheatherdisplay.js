@@ -12,6 +12,7 @@ export default function Wheatherdisplay() {
     const [weatherDays, setWeatherDays] = useState([]);
     const [chooseDay, setChooseDay] = useState([]);
     const [selectedDay, setSelectedDay] = useState(false);
+    const [humidity, setHumidity] = useState([]);
     const days = [1, 2, 3, 4, 5, 6, 7];
 
 
@@ -26,17 +27,27 @@ export default function Wheatherdisplay() {
             setLat(parseFloat(ciudadBuscada[0].lat));
             const request = await axios.get(`${URL}?lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}`);
             setWeatherDays(request.data.daily);
+            console.log(request.data.daily);
+            const Highesthumidity = humidity
             setCiudadNoEncontrada(true);
+
         }
         setLoading(false);
-    }
+    };
 
     const daySelected = (e) => {
         setChooseDay(weatherDays[e]);
-        console.log(chooseDay)
         setSelectedDay(true);
-    }
+    };
 
+    const searchHighestHum = () => {
+        const humidity = {};
+        for (let i = 0; i < weatherDays.length; i++) {
+            humidity[i] = weatherDays[i].humidity;
+            console.log(humidity)
+        };
+        return humidity;
+    }
 
 
     return (
@@ -72,6 +83,9 @@ export default function Wheatherdisplay() {
                                                 </li>
                                             ))}
                                         </ul>
+                                        <ul>
+                                            <button onClick={searchHighestHum}>Humedad</button>
+                                        </ul>
                                         {
                                             selectedDay ? <div className="display-temp">
                                                 <table className="table">
@@ -100,11 +114,10 @@ export default function Wheatherdisplay() {
                                                     <tbody>
                                                         <tr>
                                                             <td>
-                                                                <span>{chooseDay.temp.day}</span>
+                                                                {chooseDay.temp.day}
                                                             </td>
                                                             <td>
-                                                                <span>{chooseDay.temp.eve}</span>
-
+                                                                {chooseDay.temp.eve}
                                                             </td>
                                                             <td>
                                                                 {chooseDay.temp.max}
@@ -118,6 +131,9 @@ export default function Wheatherdisplay() {
                                                             <td>
                                                                 {chooseDay.temp.night}
                                                             </td>
+                                                            <td>
+                                                                { }
+                                                            </td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -125,8 +141,6 @@ export default function Wheatherdisplay() {
                                         }
                                     </>
                             }
-
-
                         </div>
                     </>
             }
